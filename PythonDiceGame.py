@@ -30,15 +30,25 @@ def rollDice():
     computer_roll.append(result_D4)
     
 
-    return user_roll
-    return computer_roll
+    return user_roll, computer_roll
+    '''
+    Was: return user_roll
+        return computer_roll
+    Comment: Functions halt as soon as something is returned.
+        To return multiple variables, use the function above.
+    '''
 
 def rollTiebreak():
     user_D5 = random.choice(D5)
     computer_D5 = random.choice(D5)
     
-    return user_D5
-    return computer_D5
+    return user_D5, computer_D5
+    '''
+    Was: return user_D5
+        return computer_D5
+    Comment: Functions halt as soon as something is returned.
+        To return multiple variables, use the function above.
+    '''
     
 #---------------------------------------------------------------------------------------------------------------------------------------    
 def main():
@@ -47,11 +57,15 @@ def main():
         input("Press enter to roll dice")
         i = 0 #this will represent the current turn number for each roll of the dice
         
-        user_roll = rollDice()
+        user_roll, computer_roll = rollDice()
+        '''
+        Was: user_roll = rollDice()
+            computer_roll = rollDice()
+        Comment: Changed to reflect the tuple output of the rollDice() function
+        '''
         print("User rolled: ", user_roll)
         urh.append(user_roll)
-        
-        computer_roll = rollDice()
+    
         print("Computer rolled: ", computer_roll)
         crh.append(computer_roll)
         
@@ -63,9 +77,13 @@ def main():
             doubleDouble = True
             while doubleDouble:
                 input("You both rolled doubles. Press enter to roll a tie-breaker")
-                user_tiebreak = rollTiebreak()
+                user_tiebreak, computer_tiebreak = rollTiebreak()
+                '''
+                Was: user_tiebreak = rollTiebreak()
+                    computer_tiebreak = rollTiebreak()
+                Comment: Changed to reflect the tuple output of the rollTiebreak() function
+                '''
                 print("User: ", user_tiebreak)
-                computer_tiebreak = rollTiebreak()
                 print("Computer: ", computer_tiebreak)
             
                 if computer_tiebreak == user_tiebreak:
